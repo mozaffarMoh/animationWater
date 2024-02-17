@@ -8,13 +8,14 @@ const Water = () => {
   const [stopFaucet, setStopFaucet] = React.useState(false);
   const [stopWater, setStopWater] = React.useState(false);
   const [pointIndex, setPointIndex] = React.useState(0);
+  const [loadingArray, setLoadingArray]: any = React.useState([]);
 
   /* Animations for Faucet */
   const faucetStyle: any = useSpring({
     from: { position: "absolute", left: "-350px" },
     to: { position: "absolute", left: "460px" },
     config: { duration: 2000 },
-    onRest: () => setStopFaucet(true),
+    onRest: () => loadingArray.length === 2 && setStopFaucet(true),
   });
 
   /* Handle Hide Water Points and increase point index */
@@ -50,11 +51,34 @@ const Water = () => {
     }
   };
 
+  const handleArrayLoading = (value: any) => {
+    setLoadingArray((prevArray: any) => {
+      let newArray = [...prevArray];
+      newArray.push(value);
+      return newArray;
+    });
+  };
+
+  console.log(stopFaucet);
+  console.log(loadingArray);
+
   return (
     <div className="water">
-      <animated.div style={faucetStyle}>
-        <img src={faucet} className="faucet-image" />
-      </animated.div>
+      <img
+        src={faucet}
+        onLoad={() => handleArrayLoading("faucet")}
+        style={{ display: "none" }}
+      />
+      <img
+        src={point}
+        onLoad={() => handleArrayLoading("point")}
+        style={{ display: "none" }}
+      />
+      {loadingArray.length === 2 && (
+        <animated.div style={faucetStyle}>
+          <img src={faucet} className="faucet-image" />
+        </animated.div>
+      )}
 
       {stopFaucet && !stopWater && (
         <animated.div style={pointStyle}>
