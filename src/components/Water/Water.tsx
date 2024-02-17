@@ -52,7 +52,6 @@ const Water = () => {
 
   return (
     <div className="water">
-{/*       
       <animated.div style={faucetStyle}>
         <img src={faucet} className="faucet-image" />
       </animated.div>
@@ -65,10 +64,10 @@ const Water = () => {
             style={handleShowBigPoint()}
           />
         </animated.div>
-      )} */}
+      )}
 
       {stopWater && (
-        <div className="circles">
+        <div className="circles flexCenter">
           <div className="circle1"></div>
           <div className="circle2"></div>
           <div className="circle3"></div>
