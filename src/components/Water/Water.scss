@@ -4,7 +4,8 @@
     padding: 30px 0px;
 
     .faucet-image {
-        width: 250px;
+        width: 200px;
+        height: 200px;
     }
 
     .point-image {
@@ -12,13 +13,10 @@
     }
 
     .circles {
-        position: absolute;
-        bottom: 100px;
-        left: 650px;
+        position: relative;
+        width: 100%;
 
-        .circle1,
-        .circle2,
-        .circle3 {
+        .circle {
             width: 10px;
             height: 10px;
             border-radius: 50%;
@@ -34,6 +32,7 @@
 }
 
 
+/* Water point animation */
 @keyframes waterPointScale {
     from {
         width: 10px;
@@ -43,5 +42,34 @@
     to {
         width: 80px;
         height: 50px;
+    }
+}
+
+
+
+/* Responsive on 1200px */
+@media (max-width : 1200px) {
+    .point-image {
+        position: relative;
+        left: 20px;
+    }
+}
+
+
+/* Responsive on 600px */
+@media (max-width : 600px) {
+    .point-image {
+        position: relative;
+        left: 50px;
+    }
+
+    .circles {
+        .circle {
+            @keyframes waterPointScale {
+                to {
+                    width: 40px;
+                }
+            }
+        }
     }
 }

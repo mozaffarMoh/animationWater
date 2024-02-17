@@ -4,18 +4,21 @@ import faucet from "../../assets/images/water/faucet5.webp";
 import { useSpring, animated } from "@react-spring/web";
 import React from "react";
 
-const Water = () => {
+const Water = ({ setNextIs }: any) => {
   const [stopFaucet, setStopFaucet] = React.useState(false);
   const [stopWater, setStopWater] = React.useState(false);
   const [pointIndex, setPointIndex] = React.useState(0);
-  const [loadingArray, setLoadingArray]: any = React.useState([]);
 
   /* Animations for Faucet */
   const faucetStyle: any = useSpring({
-    from: { position: "absolute", left: "-350px" },
-    to: { position: "absolute", left: "460px" },
+    from: {
+      width: "0%",
+    },
+    to: {
+      width: "89%",
+    },
     config: { duration: 2000 },
-    onRest: () => loadingArray.length === 2 && setStopFaucet(true),
+    onRest: () => setStopFaucet(true),
   });
 
   /* Handle Hide Water Points and increase point index */
@@ -28,12 +31,11 @@ const Water = () => {
   const pointStyle: any = stopFaucet
     ? useSpring({
         from: {
-          position: "absolute",
-          left: "670px",
-          top: "270px",
-          width: "10px",
+          width: "100%",
+          position: "relative",
+          top: "-20px",
         },
-        to: { top: pointIndex === 3 ? "420px" : "500px" },
+        to: { top: pointIndex === 3 ? "150px" : "250px" },
         config: { duration: pointIndex === 3 ? 1700 : 1000 },
         reset: true,
         onRest: handleWaterPoints,
@@ -45,43 +47,27 @@ const Water = () => {
     if (pointIndex === 3) {
       return {
         width: "80px",
-        position: "absolute",
-        left: "-25px",
       };
     }
   };
 
-  const handleArrayLoading = (value: any) => {
-    setLoadingArray((prevArray: any) => {
-      let newArray = [...prevArray];
-      newArray.push(value);
-      return newArray;
-    });
-  };
-
-  console.log(stopFaucet);
-  console.log(loadingArray);
+  React.useEffect(() => {
+    if (stopWater) {
+      setTimeout(() => {
+        setNextIs("diamonds");
+      }, 2000);
+    }
+  }, [stopWater]);
 
   return (
     <div className="water">
-      <img
-        src={faucet}
-        onLoad={() => handleArrayLoading("faucet")}
-        style={{ display: "none" }}
-      />
-      <img
-        src={point}
-        onLoad={() => handleArrayLoading("point")}
-        style={{ display: "none" }}
-      />
-      {loadingArray.length === 2 && (
-        <animated.div style={faucetStyle}>
-          <img src={faucet} className="faucet-image" />
-        </animated.div>
-      )}
-
+      {/* Start Faucet move */}(
+      <animated.div style={faucetStyle} className="flexCenter">
+        <img src={faucet} className="faucet-image" />
+      </animated.div>
+      ){/* Stop Faucet and start water */}
       {stopFaucet && !stopWater && (
-        <animated.div style={pointStyle}>
+        <animated.div style={pointStyle} className="flexCenter">
           <img
             src={point}
             className="point-image"
@@ -89,12 +75,12 @@ const Water = () => {
           />
         </animated.div>
       )}
-
+      {/* Stop water and start scale */}
       {stopWater && (
         <div className="circles flexCenter">
-          <div className="circle1"></div>
-          <div className="circle2"></div>
-          <div className="circle3"></div>
+          <div className="circle"></div>
+          <div className="circle"></div>
+          <div className="circle"></div>
         </div>
       )}
     </div>
