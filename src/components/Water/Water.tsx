@@ -1,6 +1,6 @@
 import "./Water.scss";
 import point from "../../assets/images/water/pointBlue.png";
-import faucet from "../../assets/images/water/faucet5.webp";
+import faucet from "../../assets/images/water/faucet5.jpg";
 import { useSpring, animated } from "@react-spring/web";
 import React from "react";
 
