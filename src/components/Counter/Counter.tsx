@@ -6,17 +6,17 @@ const Counter = ({ setNextIs }: any) => {
 
   /* Go to next component */
   React.useEffect(() => {
-    if (count === 0) {
+    if (count === 1) {
       setTimeout(() => {
         setNextIs("water");
-      }, 2000);
+      }, 3000);
     }
   }, [count]);
 
   /* Decrease count value */
   React.useEffect(() => {
     const handleDecreaseCount = () => {
-      if (count > -1 && count <= 3) {
+      if (count > 1 && count <= 3) {
         setTimeout(() => {
           setCount((prev) => prev - 1);
         }, 2000);

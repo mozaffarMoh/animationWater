@@ -1,0 +1,193 @@
+.diamonds {
+    width: 100%;
+
+    img {
+        width: 0px;
+        position: relative;
+        top: 0px;
+        margin: 40px;
+        transition: transform 1s;
+        transform-style: preserve-3d;
+        animation-direction: alternate;
+    }
+
+
+    .diamond1 {
+        animation: diamondsSpread1 2s infinite;
+    }
+
+    .diamond2 {
+        animation: diamondsSpread2 2.5s infinite;
+    }
+
+    .diamond3 {
+        animation: diamondsSpread3 3s infinite;
+    }
+
+    .diamond4 {
+        animation: diamondsSpread4 3.5s infinite;
+    }
+
+
+    .final-message {
+        position: absolute;
+        bottom: 20px;
+        left: 30%;
+        font-size: 50px;
+        font-weight: 800;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        color: rgb(197, 47, 47);
+    }
+}
+
+
+@keyframes diamondsSpread1 {
+    0% {
+        transform: rotate3d(0, 0, 0, 0deg);
+        width: 0px;
+        left: 200px;
+        top: 10px;
+    }
+
+    25% {
+        width: 50px;
+        top: 200px;
+        left: 20%;
+    }
+
+    50% {
+        width: 100px;
+        top: 300px;
+        left: 0%;
+    }
+
+    75% {
+        width: 150px;
+        top: 100px;
+        left: -5%;
+    }
+
+    100% {
+        width: 200px;
+        left: -15%;
+        top: -500px;
+        transform: rotate3d(0, 0, 30, 360deg)
+    }
+}
+
+
+@keyframes diamondsSpread2 {
+    0% {
+        transform: rotate3d(0, 0, 0, 0deg);
+        width: 0px;
+        left: 200px;
+        top: 10px;
+    }
+
+    25% {
+        width: 20px;
+        top: 200px;
+        left: 20%;
+    }
+
+    50% {
+        width: 50px;
+        top: 300px;
+        left: 0%;
+    }
+
+    75% {
+        width: 100px;
+        top: 100px;
+        left: -5%;
+    }
+
+    100% {
+        width: 150px;
+        left: -15%;
+        top: -500px;
+        transform: rotate3d(0, 0, 30, 360deg)
+    }
+}
+
+
+@keyframes diamondsSpread3 {
+    0% {
+        transform: rotate3d(0, 0, 0, 0deg);
+        width: 0px;
+        left: 200px;
+        top: 10px;
+    }
+
+    25% {
+        width: 100px;
+        top: 200px;
+        left: 20%;
+    }
+
+    50% {
+        width: 150px;
+        top: 300px;
+        left: 0%;
+    }
+
+    75% {
+        width: 200px;
+        top: 100px;
+        left: -5%;
+    }
+
+    100% {
+        width: 300px;
+        left: -15%;
+        top: -500px;
+        transform: rotate3d(0, 0, 30, 360deg)
+    }
+}
+
+
+@keyframes diamondsSpread3 {
+    0% {
+        transform: rotate3d(0, 0, 0, 0deg);
+        width: 0px;
+        left: 200px;
+        top: 10px;
+    }
+
+    25% {
+        width: 20px;
+        top: 200px;
+        left: 20%;
+    }
+
+    50% {
+        width: 50px;
+        top: 300px;
+        left: 0%;
+    }
+
+    75% {
+        width: 75px;
+        top: 100px;
+        left: -5%;
+    }
+
+    100% {
+        width: 100px;
+        left: -15%;
+        top: -500px;
+        transform: rotate3d(0, 0, 30, 360deg)
+    }
+}
+
+
+
+@media (max-width:600px) {
+    .diamonds {
+        .final-message {
+            left: 20%;
+            font-size: 40px;
+
+        }
+    }
+}
