@@ -8,8 +8,9 @@ const Diamonds = () => {
   React.useEffect(() => {
     setTimeout(() => {
       setFinalMessage(":)  Thanks for watching . . .");
-    }, 1000);
+    }, 5000);
   }, []);
+
   return (
     <div className="diamonds flexCenter">
       <img src={diamond} className="diamond1" />
